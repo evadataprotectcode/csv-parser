@@ -1,0 +1,10 @@
+name: Enforce security and operations requirements
+
+on:
+  pull_request:
+    types: [opened, edited, synchronize]
+
+jobs:
+  security-operations:
+    uses: evadataprotectcode/evadata-operations/.github/workflows/security-operations.yml@prod
+
