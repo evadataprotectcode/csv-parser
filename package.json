@@ -1,15 +1,9 @@
 {
   "name": "csv-parser",
-  "version": "3.0.0",
+  "version": "4.0.0",
   "description": "Streaming CSV parser that aims for maximum speed as well as compatibility with the csv-spectrum test suite",
   "license": "MIT",
-  "repository": "mafintosh/csv-parser",
-  "author": "mafintosh",
-  "maintainers": [
-    "Andrew Powell <andrew@shellscape.org>"
-  ],
-  "homepage": "https://github.com/mafintosh/csv-parser",
-  "bugs": "https://github.com/mafintosh/csv-parser/issues",
+  "repository": "evadataprotectcode/csv-parser",
   "bin": {
     "csv-parser": "./bin/csv-parser"
   },
@@ -35,15 +29,15 @@
     "minimist": "^1.2.0"
   },
   "devDependencies": {
-    "@commitlint/cli": "^8.2.0",
+    "@commitlint/cli": "^20.5.0",
     "@commitlint/config-conventional": "^8.0.0",
     "@types/node": "^12.0.0",
-    "ava": "^2.4.0",
+    "ava": "^6.4.1",
     "bops": "^1.0.0",
     "chalk": "^2.4.2",
     "concat-stream": "^2.0.0",
     "csv-spectrum": "^1.0.0",
-    "eslint": "^6.4.0",
+    "eslint": "^9.2.0",
     "eslint-config-standard": "^14.1.0",
     "eslint-plugin-import": "^2.18.2",
     "eslint-plugin-node": "^10.0.0",
@@ -51,15 +45,18 @@
     "eslint-plugin-standard": "^4.0.0",
     "execa": "^2.1.0",
     "globby": "^10.0.1",
-    "husky": "^3.0.0",
     "lint-staged": "^9.0.2",
     "loud-rejection": "^2.1.0",
-    "nyc": "^14.1.1",
-    "pre-commit": "^1.2.2",
+    "nyc": "^18.0.0",
+    "pre-commit": "^1.0.10",
     "strip-ansi": "^5.2.0",
     "text-table": "^0.2.0",
     "time-span": "^3.1.0",
-    "tsd": "^0.8.0",
+    "tsd": "^0.33.0"
+  },
+  "overrides": {
+    "cross-spawn": "^7.0.3",
+    "dot-prop": "^5.0.0",
     "lodash": "^4.18.1"
   },
   "directories": {
@@ -77,11 +74,6 @@
       "!**/fixtures/**",
       "!**/helpers/**"
     ]
-  },
-  "husky": {
-    "hooks": {
-      "commit-msg": "commitlint -e $HUSKY_GIT_PARAMS"
-    }
   },
   "lint-staged": {
     "*.js": [

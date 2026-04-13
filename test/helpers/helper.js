@@ -10,26 +10,24 @@ function fixture (name) {
   return path.join(__dirname, '../fixtures', name)
 }
 
-function collect (file, opts, cb) {
-  if (typeof opts === 'function') {
-    return collect(file, null, opts)
-  }
-  const data = read(fixture(`${file}.csv`))
-  const lines = []
-  const parser = csv(opts)
-  data
-    .pipe(parser)
-    .on('data', (line) => {
-      lines.push(line)
-    })
-    .on('error', (err) => {
-      cb(err, lines)
-    })
-    .on('end', () => {
-      // eslint-disable-next-line standard/no-callback-literal
-      cb(false, lines)
-    })
-  return parser
+async function collect (file, opts) {
+  //eslint-disable-next-line no-unused-vars
+  return new Promise((resolve, _reject) => {
+    const data = read(fixture(`${file}.csv`))
+    const lines = []
+    const parser = csv(opts)
+    data
+      .pipe(parser)
+      .on('data', (line) => {
+        lines.push(line)
+      })
+      .on('error', (err) => {
+        resolve({err, lines})
+      })
+      .on('end', () => {
+        resolve(lines)
+      });
+  });
 }
 
 module.exports = { collect, fixture }
