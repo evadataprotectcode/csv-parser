@@ -2,12 +2,11 @@ const test = require('ava')
 
 const { collect } = require('./helpers/helper')
 
-test.cb('maxRowBytes', (t) => {
-  const verify = (err, lines) => {
-    t.is(err.message, 'Row exceeds the maximum size', 'strict row size')
-    t.is(lines.length, 4576, '4576 rows before error')
-    t.end()
-  }
+test('maxRowBytes', async (t) => {
+  const {err, lines} = await collect('option-maxRowBytes', { maxRowBytes: 200 });
 
-  collect('option-maxRowBytes', { maxRowBytes: 200 }, verify)
-})
+  t.truthy(err)
+  t.is(lines.length, 4576, '4576 rows before error')
+  t.is(err.name, 'Error')
+  t.is(err.message, 'Row exceeds the maximum size')
+});
